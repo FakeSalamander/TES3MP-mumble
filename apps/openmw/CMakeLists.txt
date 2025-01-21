@@ -148,6 +148,10 @@ add_openmw_dir (mwmp/processors/worldstate ProcessorCellReset ProcessorClientScr
     ProcessorWorldMap ProcessorWorldRegionAuthority ProcessorWorldTime ProcessorWorldWeather
     )
 
+add_openmw_dir (mwmp/voip
+    MumbleLink
+        )
+
 # Main executable
 
 if (NOT ANDROID)
@@ -236,8 +240,9 @@ target_link_libraries(tes3mp ${SDL2MAIN_LIBRARY})
 endif()
 
 # Fix for not visible pthreads functions for linker with glibc 2.15
+# test3mp addition: librt added to linker to support MumbleLink
 if (UNIX AND NOT APPLE)
-target_link_libraries(tes3mp ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(tes3mp ${CMAKE_THREAD_LIBS_INIT} rt)
 endif()
 
 if(APPLE)

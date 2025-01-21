@@ -41,6 +41,7 @@
 #include "CellController.hpp"
 #include "GUIController.hpp"
 #include "MechanicsHelper.hpp"
+#include "voip/MumbleLink.hpp"
 
 using namespace mwmp;
 
@@ -453,6 +454,7 @@ void LocalPlayer::updateCell(bool forceUpdate)
         {
             mwmp::PlayerList::enableMarkers(*ptrCell);
         }
+        MumbleLink::setContext(MWBase::Environment::get().getWorld()->getCellName());
     }
 }
 

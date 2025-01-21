@@ -26,6 +26,7 @@
 #include "../mwmp/RecordHelper.hpp"
 #include "../mwmp/CellController.hpp"
 #include "../mwmp/MechanicsHelper.hpp"
+#include "../mwmp/voip/MumbleLink.hpp"
 /*
     End of tes3mp addition
 */
@@ -2226,6 +2227,17 @@ namespace MWWorld
         bool underwater = isUnderwater(getPlayerPtr().getCell(), mRendering->getCameraPosition());
 
         MWBase::Environment::get().getSoundManager()->setListenerPosDir(listenerPos, forward, up, underwater);
+
+
+        /*
+        Start of tes3mp addition
+        
+        Update listener coordinates for MumbleLink
+        */
+        mwmp::MumbleLink::updateMumble(listenerPos, forward, up);
+        /*
+        End of tes3mp addition
+        */
     }
 
     void World::updateWindowManager ()
