@@ -1,5 +1,12 @@
-TES3MP
+TES3MP-Mumble
+=============
+
+A fork of TES3MP 0.8.1 adding support for Mumble's Positional Audio Link Plugin. Based on [perfectcolor's similar fork for TES3MP 0.7.0](https://github.com/perfectcolors/openmw-tes3mp-mumble).
+
+
+TES3MP 
 ======
+
 
 Copyright (c) 2008-2015, OpenMW Team  
 Copyright (c) 2016-2022, David Cernat & Stanislav Zhukov
