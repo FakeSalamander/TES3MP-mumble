@@ -99,13 +99,9 @@ struct CallbackIdentity
 struct ScriptFunctionPointer : public ScriptIdentity
 {
     void *addr;
-#if (!defined(__clang__) && defined(__GNUC__))
+
     template<typename R, typename... Types>
-    constexpr ScriptFunctionPointer(Function<R, Types...> addr) : ScriptIdentity(addr), addr((void*)(addr)) {}
-#else
-    template<typename R, typename... Types>
-    constexpr ScriptFunctionPointer(Function<R, Types...> addr) : ScriptIdentity(addr), addr(addr) {}
-#endif
+    constexpr ScriptFunctionPointer(Function<R, Types...> addr) : ScriptIdentity(addr), addr(reinterpret_cast<void*>(reinterpret_cast<intptr_t>(addr))) {}
 };
 
 struct ScriptFunctionData
