@@ -3,6 +3,7 @@
 
 #include <osg/Vec3f>
 #include <string>
+#include <stdint.h>
 
 #ifdef _WIN32
 #include <windows.h>
