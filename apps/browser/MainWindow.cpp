@@ -97,7 +97,7 @@ void MainWindow::addServerByIP()
     arguments.append(QLatin1String("--connect=") + addr.toLatin1());
 
     if (passw != "") {
-        arguments.append(QLatin1String("--password=") + passwd.toLatin1());
+        arguments.append(QLatin1String("--password=") + passw.toLatin1());
     }
 
     if (mGameInvoker->startProcess(QLatin1String("tes3mp"), arguments, true))
