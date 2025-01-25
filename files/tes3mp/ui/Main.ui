@@ -215,6 +215,8 @@
    <addaction name="actionPlay"/>
    <addaction name="separator"/>
    <addaction name="actionRefresh"/>
+   <addaction name="separator"/>
+   <addaction name="actionAdd_by_IP"/>
   </widget>
   <action name="actionAdd">
    <property name="enabled">
