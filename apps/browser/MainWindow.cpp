@@ -89,9 +89,21 @@ void MainWindow::addServer()
 void MainWindow::addServerByIP()
 {
     bool ok;
-    QString text = QInputDialog::getText(this, tr("Add Server by address"), tr("Address:"), QLineEdit::Normal, "", &ok);
-    if (ok && !text.isEmpty())
-        addServerAndUpdate(text);
+    QString addr = QInputDialog::getText(this, tr("Add Server by address"), tr("Address:"), QLineEdit::Normal, "", &ok);
+    
+    QString passw = QInputDialog::getText(this, tr("Connecting to: ") + addr, tr("Password:"), QLineEdit::Normal, "", &ok);
+
+    QStringList arguments;
+    arguments.append(QLatin1String("--connect=") + addr.toLatin1());
+
+    if (passw != "") {
+        arguments.append(QLatin1String("--password=") + passwd.toLatin1());
+    }
+
+    if (mGameInvoker->startProcess(QLatin1String("tes3mp"), arguments, true))
+    {
+        return qApp->quit();
+    }
 }
 
 void MainWindow::deleteServer()
