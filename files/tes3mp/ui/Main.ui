@@ -249,7 +249,7 @@
   </action>
   <action name="actionAdd_by_IP">
    <property name="text">
-    <string>Add by address</string>
+    <string>Direct Connection</string>
    </property>
   </action>
  </widget>
