@@ -5,6 +5,12 @@ A fork of TES3MP 0.8.1 adding support for Mumble's Positional Audio Link Plugin.
 
 I also added a Direct Connect by IP button.
 
+**Development Roadmap**
+- Test and include the Luxtorpeda Config File Fix
+- Compile, test, and release a Windows binary
+- Test Positional Audio functionality when moving between cells or when indoors
+- Add a special context for when a player is silenced, paralyzed, or dead
+
 TES3MP 
 ======
 
