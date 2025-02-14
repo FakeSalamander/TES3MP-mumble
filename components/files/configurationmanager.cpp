@@ -14,9 +14,9 @@ namespace Files
 static const char* const openmwCfgFile = "openmw.cfg";
 
 #if defined(_WIN32) || defined(__WINDOWS__)
-static const char* const applicationName = "OpenMW";
+static const char* const applicationName = "TES3MP-Mumble";
 #else
-static const char* const applicationName = "openmw";
+static const char* const applicationName = "tes3mp-mumble";
 #endif
 
 const char* const localToken = "?local?";
