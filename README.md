@@ -3,10 +3,10 @@ TES3MP-Mumble
 
 A fork of TES3MP 0.8.1 adding support for Mumble's Positional Audio Link Plugin. Based on [perfectcolor's similar fork for TES3MP 0.7.0](https://github.com/perfectcolors/openmw-tes3mp-mumble).
 
-I also added a Direct Connect by IP button.
+I also added a Direct Connect by IP button, and I changed the application name from "openmw" to "tes3mp-mumble" in order to avoid config file conflicts with modded OpenMW and Luxtorpeda installs of OpenMW/TES3MP.
 
 **Development Roadmap**
-- Test and include the Luxtorpeda Config File Fix
+- Test the Luxtorpeda Config File Fix
 - Compile, test, and release a Windows binary
 - Test Positional Audio functionality when moving between cells or when indoors
 - Add a special context for when a player is silenced, paralyzed, or dead
