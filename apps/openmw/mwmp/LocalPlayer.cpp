@@ -456,8 +456,8 @@ void LocalPlayer::updateCell(bool forceUpdate)
             //if it's an interior cell, pass the cell name to Mumble Link as context
             MumbleLink::setContext(MWBase::Environment::get().getWorld()->getCellName());
         } else {
-            //if it's an exterior cell, set context to "TES3MPOverworld"
-            MumbleLink::setContext("TES3MPOverworld");
+            //if it's an exterior cell, set context to "Overworld"
+            MumbleLink::setContext("Overworld");
         }
         
     }
