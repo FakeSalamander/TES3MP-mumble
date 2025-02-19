@@ -48,9 +48,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            C:/DW-Classic/extern/raknet
-            C:/DW-Classic/MSVC2019_64_Ninja/deps/
-            C:/DW-Classic/MSVC2019_64_Ninja/*.ninja
+            C:/TES3MP-mumbleextern/raknet
+            C:/TES3MP-mumble/MSVC2019_64_Ninja/deps/
+            C:/TES3MP-mumble/MSVC2019_64_Ninja/*.ninja
           key: ${{ runner.os }}-deps
 
       - name: Install Building Dependencies
