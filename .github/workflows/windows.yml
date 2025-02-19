@@ -1,0 +1,83 @@
+name: Windows Build & Test
+
+defaults:
+  run:
+    shell: bash
+    working-directory: C:\DW-Classic
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'fix/*'
+      - 'feat/*'
+  pull_request:
+    branches: [ master ]
+    types:
+      - created
+  workflow_dispatch:
+
+env:
+  BUILD_TYPE: Release
+  GIT_TERMINAL_PROMPT: 0
+
+jobs:
+  Windows:
+    strategy:
+      matrix:
+        build_type: [ Release ]
+    runs-on: windows-2019
+
+    steps:
+      - name: Clone
+        working-directory: C:\
+        run: |
+          git clone https://github.com/DreamWeave-MP/DW-Classic.git
+          cd DW-Classic
+          git checkout ${{ github.head_ref }}
+
+      - name: Prime ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-${{ matrix.BUILD_TYPE }}-ccache
+          max-size: 2250M
+          verbose: 2
+
+      - name: Cache Windows Deps
+        id: cache-WinDeps
+        uses: actions/cache@v3
+        with:
+          path: |
+            C:/DW-Classic/extern/raknet
+            C:/DW-Classic/MSVC2019_64_Ninja/deps/
+            C:/DW-Classic/MSVC2019_64_Ninja/*.ninja
+          key: ${{ runner.os }}-deps
+
+      - name: Install Building Dependencies
+        if: steps.cache-WinDeps.outputs.cache-hit != 'true'
+        run: |
+          curl -o CrabNet.7z -L https://github.com/DreamWeave-MP/CrabNet/releases/download/Stable-CI/CrabNet-${{ runner.os }}-${{ matrix.BUILD_TYPE }}.7z
+          7z x -y CrabNet.7z -oextern/raknet
+          CI/before_script.msvc.sh -C -V -N -k -p Win64 -v 2019
+
+      - name: Configure
+        if: steps.cache-WinDeps.outputs.cache-hit == 'true'
+        run: |
+          CI/before_script.msvc.sh -C -V -N -k -p Win64 -v 2019 -d -e
+
+      - name: Build
+        run: |
+          cd MSVC2019_64_Ninja
+          source activate_msvc.sh
+          ninja -f build-${{ matrix.BUILD_TYPE }}.ninja
+
+
+      - name: Package
+        run: |
+          CI/make_package.msvc.sh ${{ matrix.BUILD_TYPE }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: C:/DW-Classic/dreamweave-build
+          name: dreamweave_windows-${{ matrix.BUILD_TYPE }}

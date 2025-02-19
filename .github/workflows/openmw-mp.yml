@@ -1,0 +1,86 @@
+name: Ubuntu Build & Test
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'fix/*'
+      - 'feat/*'
+  pull_request:
+    branches: [ master ]
+    types:
+      - created
+    workflow_dispatch:
+
+env:
+  BUILD_TYPE: Release
+  GIT_TERMINAL_PROMPT: 0
+
+jobs:
+  Ubuntu:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add OpenMW PPA Dependencies
+        run: sudo add-apt-repository ppa:openmw/openmw; sudo apt-get update
+
+      - name: Install Building Dependencies
+        run: |
+          sudo CI/install_debian_deps.sh gcc openmw-deps openmw-deps-dynamic
+          curl -o CrabNet.7z -L https://github.com/DreamWeave-MP/CrabNet/releases/download/Stable-CI/CrabNet-Linux-Release.7z
+          7z x -y CrabNet.7z -oextern/raknet
+
+      - name: Prime ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}
+          max-size: 1000M
+
+      - name: Configure
+        run: cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DBUILD_UNITTESTS=ON -DCMAKE_INSTALL_PREFIX=install -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_FLAGS=\"-std=c++14\" -DDESIRED_QT_VERSION=5
+
+      - name: Build
+        run: make -j$(nproc)
+
+      - name: Test
+        run: ./openmw_test_suite
+
+      - name: Install
+        shell: bash
+        run: cmake --install .
+
+      - name: Create Artifact
+        shell: bash
+        run: sudo CI/make_package.ubuntu.sh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: dreamweave_linux.tar
+          name: dreamweave_linux
+
+  # MacOS:
+  #   runs-on: macos-latest
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+
+  #     - name: Install Building Dependencies
+  #       run: CI/before_install.osx.sh
+
+  #     - name: Prime ccache
+  #       uses: hendrikmuhs/ccache-action@v1
+  #       with:
+  #         key: ${{ matrix.os }}-${{ env.BUILD_TYPE }}
+  #         max-size: 1000M
+
+  #     - name: Configure
+  #       run: |
+  #         rm -fr build  # remove the build directory
+  #         CI/before_script.osx.sh
+  #     - name: Build
+  #       run: |
+  #         cd build
+  #         make -j $(sysctl -n hw.logicalcpu) package
