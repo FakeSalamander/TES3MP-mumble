@@ -77,7 +77,7 @@ jobs:
           CI/make_package.msvc.sh ${{ matrix.BUILD_TYPE }}
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: C:/DW-Classic/dreamweave-build
           name: dreamweave_windows-${{ matrix.BUILD_TYPE }}
