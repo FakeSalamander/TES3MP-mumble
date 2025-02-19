@@ -3,7 +3,7 @@ name: Windows Build & Test
 defaults:
   run:
     shell: bash
-    working-directory: C:\DW-Classic
+    working-directory: C:\TES3MP-mumble
 
 on:
   push:
