@@ -32,8 +32,8 @@ jobs:
       - name: Clone
         working-directory: C:\
         run: |
-          git clone https://github.com/DreamWeave-MP/DW-Classic.git
-          cd DW-Classic
+          git clone https://github.com/FakeSalamander/TES3MP-mumble.git
+          cd TES3MP-mumble
           git checkout ${{ github.head_ref }}
 
       - name: Prime ccache
@@ -80,4 +80,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: C:/DW-Classic/dreamweave-build
-          name: dreamweave_windows-${{ matrix.BUILD_TYPE }}
+          name: tes3mp-mumbe_windows-${{ matrix.BUILD_TYPE }}

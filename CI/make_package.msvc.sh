@@ -15,16 +15,16 @@ fi
 
 
 PACKAGE_REQS=( \
-                   "dreamweave.exe" \
-                       "dreamweave-browser.exe" \
-                       "dreamweave-server.exe" \
+                   "tes3mp.exe" \
+                       "tes3mp-browser.exe" \
+                       "tes3mp-server.exe" \
                        "openmw-launcher.exe" \
                        "openmw-wizard.exe" \
                        "openmw-iniimporter.exe" \
 		       "defaults.bin" \
 		       "defaults-cs.bin" \
-		       "dreamweave-client-default.cfg" \
-		       "dreamweave-server-default.cfg" \
+		       "tes3mp-client-default.cfg" \
+		       "tes3mp-server-default.cfg" \
 		       "gamecontrollerdb.txt" \
 		       "openmw.cfg" \
     )
@@ -37,11 +37,11 @@ DOCS=( \
                "LICENSE" \
     )
 
-mkdir dreamweave-build \
-    && mv MSVC2019_64_Ninja/$BUILD_TYPE/resources/ dreamweave-build/ \
-    && mv MSVC2019_64_NINJA/$BUILD_TYPE/osgPlugins-3.6.5 dreamweave-build \
-    && mv MSVC2019_64_NINJA/$BUILD_TYPE/platforms dreamweave-build \
-    && cd dreamweave-build
+mkdir tes3mp-build \
+    && mv MSVC2019_64_Ninja/$BUILD_TYPE/resources/ tes3mp-build/ \
+    && mv MSVC2019_64_NINJA/$BUILD_TYPE/osgPlugins-3.6.5 tes3mp-build \
+    && mv MSVC2019_64_NINJA/$BUILD_TYPE/platforms tes3mp-build \
+    && cd tes3mp-build
 
 for DOC in "${DOCS[@]}"; do
     find .. -name "$DOC" -exec mv "{}" . \; 2> /dev/null || true
