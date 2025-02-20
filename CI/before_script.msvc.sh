@@ -940,6 +940,24 @@ printf "LZ4 1.9.2... "
 }
 cd $DEPS
 echo
+printf "LuaJIT ${LUAJIT_VER}... "
+{
+	if [ -d LuaJIT ]; then
+		printf "Exists. "
+	elif [ -z $SKIP_EXTRACT ]; then
+		rm -rf LuaJIT
+		eval 7z x -y LuaJIT-DW.7z -o$(real_pwd)/LuaJIT $STRIP
+	fi
+	export LUAJIT_DIR="$(real_pwd)/LuaJIT"
+	add_cmake_opts -DLuaJit_INCLUDE_DIR="${LUAJIT_DIR}/include" \
+		-DLuaJit_LIBRARY="${LUAJIT_DIR}/lib/lua51.lib"
+	for CONFIGURATION in ${CONFIGURATIONS[@]}; do
+		add_runtime_dlls $CONFIGURATION "$(pwd)/LuaJIT/bin/lua51.dll"
+	done
+	echo Done.
+}
+cd $DEPS
+echo
 # Google Test and Google Mock
 if [ ! -z $TEST_FRAMEWORK ]; then
 	printf "Google test 1.10.0 ..."
