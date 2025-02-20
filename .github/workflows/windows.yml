@@ -63,7 +63,7 @@ jobs:
       - name: Configure
         if: steps.cache-WinDeps.outputs.cache-hit == 'true'
         run: |
-          CI/before_script.msvc.sh -C -V -N -k -p Win64 -v 2019 -d -e
+          CI/before_script.msvc.sh  -V -N -k -p Win64 -v 2019 -d -e
 
       - name: Build
         run: |
