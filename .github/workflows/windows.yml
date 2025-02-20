@@ -79,5 +79,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          path: C:/DW-Classic/dreamweave-build
+          path: C:/TES3MP-mumble/tes3mp-build
           name: tes3mp-mumbe_windows-${{ matrix.BUILD_TYPE }}
