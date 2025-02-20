@@ -58,7 +58,7 @@ jobs:
         run: |
           curl -o CrabNet.7z -L https://github.com/DreamWeave-MP/CrabNet/releases/download/Stable-CI/CrabNet-${{ runner.os }}-${{ matrix.BUILD_TYPE }}.7z
           7z x -y CrabNet.7z -oextern/raknet
-          CI/before_script.msvc.sh -C -V -N -k -p Win64 -v 2019
+          CI/before_script.msvc.sh  -V -N -k -p Win64 -v 2019
 
       - name: Configure
         if: steps.cache-WinDeps.outputs.cache-hit == 'true'
