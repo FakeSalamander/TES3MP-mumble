@@ -58,8 +58,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          path: dreamweave_linux.tar
-          name: dreamweave_linux
+          path: tes3mp-mumble_linux.tar
+          name: tes3mp-mumble_linux
 
   # MacOS:
   #   runs-on: macos-latest
