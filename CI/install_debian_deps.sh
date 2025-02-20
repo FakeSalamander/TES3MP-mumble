@@ -21,8 +21,8 @@ declare -rA GROUPED_DEPS=(
     
     libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libswresample-dev
     libsdl2-dev libqt5opengl5-dev libopenal-dev libunshield-dev libtinyxml-dev
-    libbullet-dev liblz4-dev libpng-dev libjpeg-dev
-    ca-certificates
+    libbullet-dev liblz4-dev libpng-dev libjpeg-dev librecast-dev libluajit-5.1-dev
+    ca-certificates googletest libgtest-dev libgmock-dev
   "
   # TODO: add librecastnavigation-dev when debian is ready
 
