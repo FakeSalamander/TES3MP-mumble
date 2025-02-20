@@ -53,7 +53,7 @@ done
 
 find ../MSVC2019_64_Ninja/$BUILD_TYPE -name "*.dll" -exec cp  "{}" . \;
 
-git clone https://github.com/DreamWeave-MP/CoreScripts.git server/
+git clone https://github.com/TES3MP/CoreScripts.git server/
 
 echo "Acquiring IO2 . . ."
 curl -o server/lib/io2.dll -L https://github.com/DreamWeave-MP/Lua-io2/releases/download/Stable-CI/io2-MinSizeRel.dll

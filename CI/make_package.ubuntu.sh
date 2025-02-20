@@ -75,7 +75,7 @@ for BIN in "${PACKAGE_BINARIES[@]}"; do
     cp -r ../$BIN .
 done
 
-git clone https://github.com/DreamWeave-MP/CoreScripts.git server/
+git clone https://github.com/TES3MP/CoreScripts.git server/
 
 echo "Acquiring cjson . . ."
 curl  -o server/lib/cjson.dll -L https://github.com/DreamWeave-MP/lua-cjson/releases/download/Stable-CI/cjson-MinSizeRel.dll
