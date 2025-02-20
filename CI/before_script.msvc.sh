@@ -514,6 +514,7 @@ mkdir -p deps
 cd deps
 
 DEPS="$(pwd)"
+LUAJIT_VER="v2.1.0-beta3-452-g7a0cf5fd"
 
 if [ -z $SKIP_DOWNLOAD ]; then
 	echo "Downloading dependency packages."
