@@ -41,7 +41,7 @@ jobs:
           max-size: 1000M
 
       - name: Configure
-        run: cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DBUILD_UNITTESTS=ON -DCMAKE_INSTALL_PREFIX=install -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_FLAGS=\"-std=c++14\" -DDESIRED_QT_VERSION=5 -LUAJIT_INCLUDE_DIR="extern/luajit/include/" -LUAJIT_LIBRARY="extern/luajit/lib"
+        run: cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DBUILD_UNITTESTS=ON -DCMAKE_INSTALL_PREFIX=install -DCMAKE_CXX_STANDARD=14 -DCMAKE_CXX_FLAGS=\"-std=c++14\" -DDESIRED_QT_VERSION=5 -DLUAJIT_INCLUDE_DIR="extern/luajit/include/" -DLUAJIT_LIBRARY="extern/luajit/lib"
 
       - name: Build
         run: make -j$(nproc)
