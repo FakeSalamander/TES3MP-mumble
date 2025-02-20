@@ -140,4 +140,4 @@ EOF
 
   echo "Job complete! Making archive . . ."
   cd ..
-  tar -cvf tes3mp-mumble_linux.tar tes3mp-mumble-build
+  tar -cvf tes3mp-mumble_linux.tar tes3mp-build
