@@ -31,7 +31,7 @@ jobs:
           sudo CI/install_debian_deps.sh gcc openmw-deps openmw-deps-dynamic
           curl -o CrabNet.7z -L https://github.com/DreamWeave-MP/CrabNet/releases/download/Stable-CI/CrabNet-Linux-Release.7z
           7z x -y CrabNet.7z -oextern/raknet
-          curl -o LuaJIT.7z - L https://github.com/DreamWeave-MP/LuaJIT/releases/download/Stable-CI/LuaJIT-Linux.7z
+          curl -o LuaJIT.7z -L https://github.com/DreamWeave-MP/LuaJIT/releases/download/Stable-CI/LuaJIT-Linux.7z
           7z x -y LuaJIT.7z -oextern/luajit
 
       - name: Prime ccache
