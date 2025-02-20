@@ -574,6 +574,11 @@ if [ -z $SKIP_DOWNLOAD ]; then
 	download "LZ4 1.9.2" \
 		"https://gitlab.com/OpenMW/openmw-deps/-/raw/main/windows/lz4_win${BITS}_v1_9_2.7z" \
 		"lz4_win${BITS}_v1_9_2.7z"
+		
+	# LuaJIT
+	download "LuaJIT ${LUAJIT_VER}" \
+		"https://github.com/DreamWeave-MP/LuaJIT/releases/download/Stable-CI/LuaJIT-Windows.7z" \
+		"LuaJIT-DW.7z"
 
 	# Google test and mock
 	if [ ! -z $TEST_FRAMEWORK ]; then
