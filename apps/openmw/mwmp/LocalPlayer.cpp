@@ -450,6 +450,7 @@ void LocalPlayer::updateCell(bool forceUpdate)
 
         // If this is an interior cell, are there any other players in it? If so,
         // enable their markers
+        /*
         if (!ptrCell->isExterior())
         {
             mwmp::PlayerList::enableMarkers(*ptrCell);
@@ -458,7 +459,8 @@ void LocalPlayer::updateCell(bool forceUpdate)
         } else {
             //if it's an exterior cell, set context to "Overworld"
             MumbleLink::setContext("Overworld");
-        }
+        }*/
+        MumbleLink::setContext("Overworld");
         
     }
 }
