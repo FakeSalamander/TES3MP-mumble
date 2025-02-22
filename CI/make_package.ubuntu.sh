@@ -46,6 +46,7 @@ LIBRARIES=( \
                        "liblua5.1.so" \
                        "libpng16.so" \
                        "libtinyxml.so" \
+                       "libavcodec.so" \
     )
 
 DEFAULTS=( \
